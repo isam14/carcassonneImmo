@@ -19,6 +19,30 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age_prenom", type="string", length=255, nullable=true)
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age_nom", type="string", length=255, nullable=true)
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="age_tel", type="string", length=255, nullable=true)
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $tel;
+
 
     /**
      * Get id
@@ -29,5 +53,28 @@ class User extends BaseUser
     {
         return $this->id;
     }
-}
 
+    /**
+     * Set tel
+     *
+     * @param string $tel
+     *
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return string
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+}
