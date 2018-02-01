@@ -24,7 +24,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="age_prenom", type="string", length=255, nullable=true)
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $prenom;
 
@@ -32,7 +31,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="age_nom", type="string", length=255, nullable=true)
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $nom;
 
@@ -40,7 +38,6 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(name="age_tel", type="string", length=255, nullable=true)
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $tel;
 

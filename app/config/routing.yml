@@ -4,7 +4,7 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-    # remplacer all.xml par security.xml
+    # remplacer all.xml par security.xml pour ne pas acceder à /register
 
 easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/AdminController.php"
