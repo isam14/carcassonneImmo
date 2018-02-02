@@ -145,12 +145,41 @@ assetic:
 
             output: "fonts/glyphicons-halflings-regular.woff"
 
+#EasyAdmin
 easy_admin:
-   entities:
-       User:
-           class: AppBundle\Entity\User
-           form:
-               fields:
+    site_name: 'Carcassonne <em style="font-size: 80%;">Immo.</em>'
+    design:
+        brand_color: '#28B1B6'
+        menu:
+            - { entity: 'User', icon: 'user' }
+            - { entity: 'Annonce', icon: 'buysellads' }
+            - { entity: 'Proprio', icon: 'address-card' }
+            - { entity: 'TypeAnnonce', icon: 'folder-open' }
+            
+        assets:
+            css:
+                # HTTP protocol-relative URL
+                - '//example.org/css/admin1.css'
+                # absolute non-secure URL
+                - 'http://example.org/css/admin2.css'
+                # absolute secure URL
+                - 'https://example.org/css/admin3.css'
+                # absolute internal bundle URL
+                - '/bundles/user/css/admin4.css'
+                # relative internal bundle URL
+                - 'bundles/app/css/admin5.css'
+            js:
+                # this option works exactly the same as the 'css' option
+                - '//example.org/js/admin1.js'
+                - 'http://example.org/js/admin2.js'
+                - 'https://example.org/js/admin3.js'
+                - '/bundles/user/js/admin4.js'
+                - 'bundles/app/js/admin5.js'
+    entities:
+        User:
+            class: AppBundle\Entity\User
+            form:
+                fields:
                    - username
                    - prenom
                    - nom
@@ -158,8 +187,9 @@ easy_admin:
                    - email
                    - password
                    - enabled
-           list:
-               fields:
+            list:
+                title: L'agent immobilier
+                fields:
                    - username
                    - prenom
                    - nom
@@ -167,8 +197,41 @@ easy_admin:
                    - email
                    - password
                    - enabled
-        #    show:
-        #        fields:
+        #   show:
+        #       fields:
+        Annonce:
+            class: AppBundle\Entity\Annonce
+            list:
+                title: Les Annonces
+            form:
+                fields:
+                    - titre
+                    - prix
+                    - nbre_Piece
+                    - photo
+                    - description
+                    - agent
+                    - type_Annonce
+                    - Proprio
+        TypeAnnonce:
+            class: AppBundle\Entity\TypeAnnonce
+            list:
+                title: Le type d'Annonce
+                fields:
+                    - { property: 'titre', label: 'Type'}
+            form:
+                title: Créer un type d'annonce
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8' }
+                    - { property: 'titre', label: 'Titre', type_options: {required: true}}
+        Proprio:
+            class: AppBundle\Entity\Proprio
+            list:
+                title: Les clients / propriétaires
+                fields:
+                    - { property: 'prenom', label: 'Prénom' }
+                    - { property: 'nom', label: 'Nom' }
+                    - { property: 'tel', label: 'Tel' }
 
 
 

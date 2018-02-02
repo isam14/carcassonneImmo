@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Proprios list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Tel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proprio in proprios %}
+            <tr>
+                <td><a href="{{ path('admin_proprio_show', { 'id': proprio.id }) }}">{{ proprio.id }}</a></td>
+                <td>{{ proprio.prenom }}</td>
+                <td>{{ proprio.nom }}</td>
+                <td>{{ proprio.tel }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_proprio_show', { 'id': proprio.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_proprio_edit', { 'id': proprio.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_proprio_new') }}">Create a new proprio</a>
+        </li>
+    </ul>
+{% endblock %}
