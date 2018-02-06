@@ -124,4 +124,10 @@ class Proprio
     {
         return $this->tel;
     }
+    
+    public function __toString()
+    {
+        return $this->getPrenom() . " " . $this->getNom();
+    }
+
 }

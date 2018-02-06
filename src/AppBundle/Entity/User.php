@@ -123,4 +123,9 @@ class User extends BaseUser
     {
         return $this->nom;
     }
+
+    public function __toString()
+    {
+        return $this->getPrenom() . " " . $this->getNom();
+    }
 }

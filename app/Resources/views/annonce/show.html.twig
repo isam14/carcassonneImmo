@@ -1,9 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Annonce</h1>
-
-    <table>
+<div>
+    <ul class="list-unstyled">
+        <li>
+            <a href="{{ path('admin_annonce_index') }}">Retour à la liste des annonces</a>
+        </li>
+    </ul>
+</div>
+<div class="col text-center titre">
+    <h1><div class="col text-center titre">Détail de l'Annonce</h1>
+    </div>
+    <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -23,7 +31,7 @@
             </tr>
             <tr>
                 <th>Photo</th>
-                <td>{{ annonce.photo }}</td>
+                <td><img class='img-rounded' src='{{ vich_uploader_asset (annonce, 'imageFile') }}'</td>
             </tr>
             <tr>
                 <th>Description</th>
@@ -31,18 +39,7 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_annonce_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_annonce_edit', { 'id': annonce.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+    
+    
+    {% endblock %}
+    

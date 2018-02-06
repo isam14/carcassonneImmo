@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("carcassonneimmo.com/annonces")
  */
-class AnnonceController extends Controller
+class ListAnnonceController extends Controller
 {
     /**
      * Lists all annonce entities.
@@ -27,7 +27,7 @@ class AnnonceController extends Controller
 
         $annonces = $em->getRepository('AppBundle:Annonce')->findAll();
 
-        return $this->render('annonce/index.html.twig', array(
+        return $this->render('annonce/list.html.twig', array(
             'annonces' => $annonces,
         ));
     }

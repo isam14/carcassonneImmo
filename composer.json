@@ -37,7 +37,9 @@
         "symfony/symfony": "3.4.*",
         "symfony/templating": "v3.4.2",
         "twbs/bootstrap": "^3.3",
-        "twig/twig": "^1.0||^2.0"
+        "twig/twig": "^1.0||^2.0",
+        "gumlet/php-image-resize": "1.7.*",
+        "vich/uploader-bundle": "^1.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -3,9 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * Annonce
+ * @ORM\Entity
+ * @Vich\Uploadable
  *
  * @ORM\Table(name="ann_annonce")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AnnonceRepository")
@@ -50,6 +54,18 @@ class Annonce
     private $photo;
 
     /**
+     * @Vich\UploadableField(mapping="annonce_photos", fileNameProperty="photo")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="ann_description", type="text")
@@ -57,19 +73,19 @@ class Annonce
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="age_oid", referencedColumnName="age_oid")
      */
     private $agent;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TypeAnnonce", inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity="TypeAnnonce")
      * @ORM\JoinColumn(name="typ_oid", referencedColumnName="typ_oid")
      */
     private $typeAnnonce;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Proprio", inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity="Proprio")
      * @ORM\JoinColumn(name="pro_oid", referencedColumnName="pro_oid")
      */
     private $proprio;
@@ -275,4 +291,31 @@ class Annonce
     {
         return $this->proprio;
     }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile
+     *
+     * @return Photo
+    */
+    public function setImageFile(File $photo = null)
+    {
+        $this->imageFile = $photo;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($photo) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+            // $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    
 }
+

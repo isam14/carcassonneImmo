@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Proprio controller.
  *
- * @Route("admin/proprio")
+ * @Route("carcassonneimmo.com/admin/proprio")
  */
 class ProprioController extends Controller
 {
