@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use AppBundle\Form\AnnonceType;
 
 /**
  * Annonce controller.
@@ -134,5 +137,34 @@ class AnnonceController extends Controller
             ->getForm()
         ;
     }
-    
+
+    /**
+    * 
+    * 
+    */
+    public function searchAction(Request $request)
+    {
+        $annonce = new Annonce();
+        $form = $this->createFormBuilder($annonce)
+        ->add('Recherche', SearchType::class)
+        ->add('Rechercher', SubmitType::class)
+        ->getForm();
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $data = $form->getData();
+            $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('AppBundle:Annonce')
+            ;
+            $searchAnnonce = $repository->find($data);
+            return $this->render('AppBundle::list.html.twig', array(
+                'Annonce' => $annonce
+            ));
+        }
+        return $this->render('AppBundle:list.html.twig', array(
+            'form' => $form->createView()
+        ));
+    }
+
 }

@@ -17,15 +17,27 @@ class AnnonceType extends AbstractType
     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('titre')->add('prix')->add('nbrePiece')->add('imageFile', VichImageType::class)->add('photo')->add('description')->add('agent')->add('typeAnnonce')->add('proprio')->add('typeAnnonce', ChoiceType::class, array(
+        $builder
+        ->add('titre')
+        ->add('prix')
+        ->add('nbrePiece')
+        ->add('imageFile', VichImageType::class)
+        ->add('photo')
+        ->add('description')
+        ->add('agent')
+        ->add('typeAnnonce')
+        ->add('proprio')
+        ->add('typeAnnonce', ChoiceType::class, array(
             'choices' => array(
-                'Locations' => true,
-                'Ventes' => false,
-                'Autres' => Null,
+            'Locations' => true,
+            'Ventes' => false,
+            'Autres' => Null,
                 
             )));
             
-        }/**
+        }
+        
+        /**
         * {@inheritdoc}
         */
         public function configureOptions(OptionsResolver $resolver)

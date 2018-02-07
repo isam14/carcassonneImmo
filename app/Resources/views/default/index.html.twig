@@ -1,14 +1,82 @@
-{% extends 'base.html.twig' %}
-
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
 {% block body %}
+
+
 <div id="wrapper">
     <div id="container">
+
+
+
+
+    <nav class="navbar navbar-inverse">
+        
+        <!-- Brand and toggle get grouped for better mobile display -->
+        
+        <div class="navbar-header">
+            
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                
+                <span class="sr-only">Toggle navigation</span>
+                
+                <span class="icon-bar"></span>
+                
+                <span class="icon-bar"></span>
+                
+                <span class="icon-bar"></span>
+                
+            </button>
+            
+            <a href="#" class="navbar-brand">Carcassonne Immo</a>
+            
+        </div>
+        
+        <!-- Collection of nav links and other content for toggling -->
+        
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav">
+                
+                <li class="active"><a href="/">Home</a></li>
+                
+                <!-- <li><a href="#">Formulaire</a></li>
+                
+                <li><a href="#">Messages</a></li> -->
+                
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                +
+                +                        <li><a href="{{ path('fos_user_profile_edit') }}"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a></li>
+                +
+                +                        <li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span>{{ ' Logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                +
+                +                    {% else %}
+                +
+                +                        <li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in">{{ ' Login'|trans({}, 'FOSUserBundle') }}</a></li>
+                    +                        <li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user">{{ ' Logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                        +
+                        +                    {% endif %}
+                        
+                    </ul>
+                    
+                </div>
+                
+            </nav>
+
+
+
         
         <div >
             <svg id="icon-status" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z" fill="#759E1A"/></svg>
             
             <div id="welcome">
-                <h1><span>Welcome to</span> Carcassone Immo </h1>
+                <h1><span>Bienvenue sur</span> Carcassone Immo </h1>
             </div>
             
         </div>
@@ -16,7 +84,7 @@
         <div>
             <ul class="list-unstyled">
                 <li>
-                    J'utilise Symfony car c'est le seul framework que je connaisse qui permette de realiser un site complet front and back en un minimum de temps sans avoir à tout coder à la main. Et grâce à l'integration de bundles c'est nettement plus rapide.
+                    J'utilise Symfony car c'est le seul PHP Framework que je connaisse qui permet de réaliser un site complet front and back en un minimum de temps sans avoir à tout coder à la main. Et grâce à l'intégration de bundles c'est nettement plus rapide. De plus grâce à Doctrine la relation avec la BDD en est simplifiée. 
                 </li>
                 <li>
                     <a href="../carcassonneimmo.com/annonces">Listing des annonces</a>
@@ -28,31 +96,3 @@
 </div>
 {% endblock %}
 
-{% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-    #icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
-    #icon-book { display: none; }
-    
-    @media (min-width: 768px) {
-        #wrapper { width: 80%; margin: 2em auto; }
-        #icon-book { display: inline-block; }
-        #status a, #next a { display: block; }
-        
-        @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        @keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
-        .sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
-    }
-</style>
-{% endblock %}

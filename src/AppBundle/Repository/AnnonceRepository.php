@@ -10,4 +10,23 @@ namespace AppBundle\Repository;
  */
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function newAction(Request $request)
+{
+    // build the form ...
+
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($post);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl(
+            'admin_post_show',
+            array('id' => $post->getId())
+        ));
+    }
+
+    // render the template
+}
 }
