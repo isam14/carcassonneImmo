@@ -8,10 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
-
-use AppBundle\Form\AnnonceType;
 
 /**
 * Annonce controller.
@@ -140,12 +137,9 @@ class ListAnnonceController extends Controller
         ;
     }
     
-    /**
-    * 
-    * 
-    */
     public function searchAction(Request $request)
     {
+        dump($request);
         $annonce = new Annonce();
         $form = $this->createFormBuilder($annonce)
         ->add('Recherche', SearchType::class)

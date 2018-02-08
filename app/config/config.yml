@@ -152,7 +152,7 @@ easy_admin:
     show:
         max_results: 20    
     design:
-        brand_color: '#719A9F'
+        brand_color: '#62667F'
         menu:
             - { entity: 'User', icon: 'user' }
             - { entity: 'Annonce', icon: 'buysellads' }

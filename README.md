@@ -5,9 +5,7 @@ site d'annonces immo
 
 https://github.com/isam14/carcassonneImmo
 
-I realized a Symfony Project to create an online 
-
-#Real Estate Agency: Carcassonne Immo.
+I realized a Symfony Project to create an online Real Estate Agency: Carcassonne Immo.
 
 This website will allow people to make a search with keywords to sort the property they're looking for.
 

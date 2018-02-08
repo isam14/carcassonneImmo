@@ -8,6 +8,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use \Gumlet\ImageResize;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 class AnnonceType extends AbstractType
@@ -29,9 +31,9 @@ class AnnonceType extends AbstractType
         ->add('proprio')
         ->add('typeAnnonce', ChoiceType::class, array(
             'choices' => array(
-            'Locations' => true,
-            'Ventes' => false,
-            'Autres' => Null,
+                'Locations' => true,
+                'Ventes' => false,
+                'Autres' => Null,
                 
             )));
             
@@ -55,6 +57,20 @@ class AnnonceType extends AbstractType
             return 'appbundle_annonce';
         }
         
-        
-    }
-    
+        public function listAction(Request $request){
+            $form = $this->createFormBuilder()
+            ->add("recherche", SearchType::class, array(
+                'required' => false,
+                ))
+                ->add("type", EntityType::class, array(
+                    'class' => 'AppBundle:TypeAnnonce',
+                    'placeholder' => 'Sélectionner un type d\'annonce',
+                    'required' => false,
+                    ))
+                    ->getForm();
+                    
+                }
+                
+                
+            }
+            
