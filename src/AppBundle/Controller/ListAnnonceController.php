@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SearchType;
 /**
 * Annonce controller.
 *
-* @Route("carcassonneimmo.com/annonces")
+* @Route("/annonce")
 */
 class ListAnnonceController extends Controller
 {
@@ -59,7 +59,7 @@ class ListAnnonceController extends Controller
             'form' => $form->createView(),
         ));
     }
-    
+
     /**
     * Finds and displays a annonce entity.
     *
@@ -137,29 +137,45 @@ class ListAnnonceController extends Controller
         ;
     }
     
+    /**
+    * Annonce controller.
+    *
+    * @Route("/search", name="admin_annonce_search")
+    * @Method("GET")
+    */
     public function searchAction(Request $request)
     {
-        dump($request);
-        $annonce = new Annonce();
-        $form = $this->createFormBuilder($annonce)
-        ->add('Recherche', SearchType::class)
-        ->add('Rechercher', SubmitType::class)
+        $form = $this->createFormBuilder()
+        ->add('motClef', SearchType::class)
+        ->add('rechercher', SubmitType::class)
         ->getForm();
+        
         $form->handleRequest($request);
-        if ($form->isValid()) {
+        
+        $motClef = "";
+        $repository = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('AppBundle:Annonce')
+        ;
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Annonce')
-            ;
-            $searchAnnonce = $repository->find($data);
-            return $this->render('AppBundle::list.html.twig', array(
-                'Annonce' => $annonce
-            ));
+            $motClef = $data['motClef'];
+            
+            
+            $annonces = $repository->findMotClef($motClef);
+            
+            
+        } else {
+            $annonces = $repository->findAll();
         }
-        return $this->render('AppBundle:list.html.twig', array(
-            'form' => $form->createView()
+        
+        return $this->render('annonce/list.html.twig', array(
+            'annonces' => $annonces,
+            'form' => $form->createView(),
         ));
     }
+    
+    
+    
 }

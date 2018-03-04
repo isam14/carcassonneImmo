@@ -1,25 +1,23 @@
 {% extends 'base.html.twig' %}
+
+
+    {% block stylesheets %} 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
+    {% endblock %}
+
+
+
 {% block body %}
 
 <div class="container fluid">
-    <div class="row">
-        <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default" value="search">Submit</button>
-        </form>
-    </div> 
-
-    
     <div class="col text-center titre"> 
-        
+
         <h1>Liste des Annonces</h1>
     </div>
     
     <div class='col col-xs-12'>
-        <table class="table">
-            <thead class="text-center">
+        <table id="malist" class="table" >
+            <thead>
                 <tr>
                     <th>N°Annonce</th>
                     <th>Titre</th>
@@ -45,3 +43,18 @@
 </div>
 
 {% endblock %}
+
+    {% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script> 
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready( function () {
+    $('#malist').DataTable();
+} );
+</script>
+    {% endblock %}
+
+

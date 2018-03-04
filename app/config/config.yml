@@ -163,23 +163,22 @@ easy_admin:
             class: AppBundle\Entity\User
             form:
                 fields:
-                - username
-                - prenom
-                - nom
-                - tel
-                - email
-                - password
-                - enabled
+                    - username
+                    - prenom
+                    - nom
+                    - tel
+                    - email
+                    - password
+                    - enabled
             list:
                 title: L'agent immobilier
                 fields:
-                - username
-                - prenom
-                - nom
-                - tel
-                - email
-                - password
-                - enabled
+                    - username
+                    - prenom
+                    - nom
+                    - tel
+                    - email
+                    - enabled
         Annonce:
             class: AppBundle\Entity\Annonce
             list:

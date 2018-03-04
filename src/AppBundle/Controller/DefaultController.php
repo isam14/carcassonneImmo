@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/carcassonneimmo.com", name="homepage")
+     * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {
@@ -19,12 +19,4 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/", name="redirect_page")
-     * 
-     */
-    public function redirectAction()
-    {
-        return $this->redirectToRoute("homepage");
-    }
 }

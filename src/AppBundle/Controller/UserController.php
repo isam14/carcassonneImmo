@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * User controller.
  *
- * @Route("carcassonneimmo.com/admin/agent")
+ * @Route("/admin/agent")
  */
 class UserController extends Controller
 {

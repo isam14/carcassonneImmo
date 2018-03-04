@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Typeannonce controller.
  *
- * @Route("carcassonneimmo.com/admin/typeannonce")
+ * @Route("/admin/typeannonce")
  */
 class TypeAnnonceController extends Controller
 {

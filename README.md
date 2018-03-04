@@ -17,7 +17,7 @@ A listing page for all the Homes and Properties ( for Rent or for Sale )
 
 A page detailing a specific ad with title, price, number of rooms, description and a picture of the property.
 
-I also implemented a fully fonctionnal Back End using EasyAdminBundle to be able to fully administrate this website.
+I also implemented a fully functionnal Back End using EasyAdminBundle to be able to fully administrate this website.
 
 I installed:
 

@@ -14,7 +14,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 /**
 * Annonce controller.
 *
-* @Route("carcassonneimmo.com/annonces")
+* @Route("/annonce")
 */
 class AnnonceController extends Controller
 {
@@ -140,32 +140,5 @@ class AnnonceController extends Controller
         ;
     }
     
-    /**
-    * 
-    * @Route("/carcassonneimmo.com/annonces", name="recherche")
-    */
-    public function searchAction(Request $request)
-    {
-        $annonce = new Annonce();
-        $form = $this->createFormBuilder($annonce)
-        ->add('Recherche', SearchType::class)
-        ->add('Rechercher', SubmitType::class)
-        ->getForm();
-        $form->handleRequest($request);
-        if ($form->isValid()) {
-            $data = $form->getData();
-            $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('AppBundle:Annonce')
-            ;
-            $searchAnnonce = $repository->find($data);
-            return $this->render('AppBundle::list.html.twig', array(
-                'Annonce' => $annonce
-            ));
-        }
-        return $this->render('AppBundle:list.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
+
 }

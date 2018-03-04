@@ -56,21 +56,23 @@ class AnnonceType extends AbstractType
         {
             return 'appbundle_annonce';
         }
+
+        // public function searchAnnonces(Request $request)
         
-        public function listAction(Request $request){
-            $form = $this->createFormBuilder()
-            ->add("recherche", SearchType::class, array(
-                'required' => false,
-                ))
-                ->add("type", EntityType::class, array(
-                    'class' => 'AppBundle:TypeAnnonce',
-                    'placeholder' => 'Sélectionner un type d\'annonce',
-                    'required' => false,
-                    ))
-                    ->getForm();
-                    
-                }
-                
-                
-            }
+        // {
+        //     $form = $this->createFormBuilder()
+        //     ->add("recherche", SearchType::class, array(
+        //         'required' => false,
+        //     ))
+        //     ->add("type", EntityType::class, array(
+        //         'class' => 'AppBundle:TypeAnnonce',
+        //         'placeholder' => 'Sélectionner un type d\'annonce',
+        //         'required' => false,
+        //     ))
+        //     ->getForm();
             
+        // }
+    
+        
+}
+    
