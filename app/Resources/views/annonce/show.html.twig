@@ -23,7 +23,7 @@
             </tr>
             <tr>
                 <th>Prix</th>
-                <td>{{ annonce.prix }}</td>
+                <td>{{ annonce.prix|number_format (2, '.', ',') ~ '€' }}</td>
             </tr>
             <tr>
                 <th>Nbrepiece</th>

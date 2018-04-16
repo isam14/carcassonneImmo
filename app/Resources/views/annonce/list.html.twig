@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{ annonce.id }}</td>
                     <td><a href="{{ path('admin_annonce_show', { 'id': annonce.id }) }}">{{ annonce.titre }}</a></td>
-                    <td>{{ annonce.prix }}</td>
+                    <td>{{ annonce.prix|number_format(2, '.', ',') ~ '€' }}</td>
                     <td>{{ annonce.nbrePiece }}</td>
                     <td><img class="img-rounded" src="{{ vich_uploader_asset(annonce, 'imageFile') }}"></td>
                 </tr>
@@ -39,7 +39,10 @@
             </tbody>
         </table>
     </div>
-    
+
+
+
+
 </div>
 
 {% endblock %}

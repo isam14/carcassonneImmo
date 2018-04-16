@@ -1,6 +1,6 @@
 {
     "name": "simplon/carcassonneimmo",
-    "license": "proprietary",
+    "license": "IsabelleM",
     "type": "project",
     "autoload": {
         "psr-4": {
@@ -22,11 +22,13 @@
     "require": {
         "php": ">=5.5.9",
         "components/jquery": "^3.1",
+        "components/jqueryui": "^1.12",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
+        "easycorp/easyadmin-bundle": "^1.17",
         "friendsofsymfony/user-bundle": "~2.0",
+        "gumlet/php-image-resize": "1.7.*",
         "incenteev/composer-parameter-handler": "^2.0",
-        "javiereguiluz/easyadmin-bundle": "^1.17",
         "oyejorge/less.php": "v1.7.0.14",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
@@ -38,7 +40,6 @@
         "symfony/templating": "v3.4.2",
         "twbs/bootstrap": "^3.3",
         "twig/twig": "^1.0||^2.0",
-        "gumlet/php-image-resize": "1.7.*",
         "vich/uploader-bundle": "^1.8"
     },
     "require-dev": {

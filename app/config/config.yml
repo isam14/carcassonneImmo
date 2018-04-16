@@ -146,6 +146,9 @@ assetic:
 
 #EasyAdmin
 easy_admin:
+    list:
+        actions:
+            - { name: 'edit', icon: 'pencil' }
     site_name: 'Carcassonne <em style="font-size: 80%;">Immo.</em>'
     list:
         max_results: 30
@@ -153,6 +156,7 @@ easy_admin:
         max_results: 20    
     design:
         brand_color: '#62667F'
+        # form_theme: [ 'horizontal', 'VichUploaderBundle:Form:fields.html.twig']
         menu:
             - { entity: 'User', icon: 'user' }
             - { entity: 'Annonce', icon: 'buysellads' }
